@@ -35,7 +35,6 @@ var loadLevel = function(board) {
 		$("#gameBoard").append($(newRow));
 	}
 	//in the future, make board as big as possible and variable
-	size = "40px";
 	$(".gameCell").css("height",size);
 	$(".gameCell").css("width",size);
 }
@@ -58,6 +57,7 @@ drawEverything = function(robot, board) {
 	loadLevel(board);
 	var newi = robot.newLocation[0];
 	var newj = robot.newLocation[1];
-	//$("#i"+newi+"j"+newj).html('');
+	console.log(""+newi+newj);
+	var imgPath = "./8bit_img/neptr.png"
 	$("#i"+newi+"j"+newj).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
 }

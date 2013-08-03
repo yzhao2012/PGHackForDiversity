@@ -98,15 +98,14 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 	
 			var coreLoop = function() {
 				if (robot.isDead) {
-					alert ("your robot has died!");
+					alert("your robot has died!");
 					flag = false;
 				}
 				
-				if (pyout == "N" ||
-				pyout == "S" ||
-				pyout == "E" ||
-				pyout == "W") {
-					robot.move(pyout);
+				if (robot.move(pyout)) {
+					alert("robot moved");
+				} else {
+					alert("you typed stuff wrong";)
 				}
 				
 				console.log(robot.getLocation());

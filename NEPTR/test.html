@@ -6,12 +6,18 @@
 <head>
 	<script src="matrices.js" type="text/javascript"></script>
 	<script src="board.js" type="text/javascript"></script>
+	<script src="robot.js" type="text/javascript"></script>
         
 </head>
 <body>
 	<script type="text/javascript">
 		var board1 = new board(test);
-		alert(board1.finalMatrix[0][0].getState());	
+		var robot1 = new robot(5,[1,2]);
+//		alert(board1.finalMatrix[0][0].getState());	
+//		alert(robot1.getLocation());
+		robot1.move("N");
+		alert(robot1.getLocation());
+		
 	</script>
 
 </body>

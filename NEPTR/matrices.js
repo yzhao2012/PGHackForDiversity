@@ -1,1 +1,1 @@
-var test = [["start","empty","empty"],["empty","empty","empty"],["empty","empty","end"]];
+var level1 = [["start","empty","empty","empty"],["empty","empty","empty","empty"],["empty","empty","empty","end"]];

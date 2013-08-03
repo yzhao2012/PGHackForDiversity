@@ -114,7 +114,7 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 					message += "\nMessage: Invalid move. Your robot crashed :(";
 				}
 				
-				console.log(robot.oldLocation());
+				console.log(robot.oldLocation);
 				
 				var robotx = robot.newLocation[0];
 				var roboty = robot.newLocation[1];
@@ -158,8 +158,9 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 		        
 		        $("#doOneStep").on('click', function(e){
 		        	runit(robot,board);
-		        	pyout = $("#output").value();
-		        	coreLoop();
+		        	pyout = $("#output").html();
+		        	console.log(pyout);
+		        	//coreLoop();
 		        })
 			})
 	

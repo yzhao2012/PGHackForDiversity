@@ -9,8 +9,8 @@ function builtinRead(x) {
 }
 
 function runit(robot, board) {
-   var prog = "robotHealth = " + robot.getHealth();
-   prog += "\nrobotLocation = " + robot.getLocation();
+   var prog = "robotHealth = " + robot.health;
+   prog += "\nrobotLocation = " + robot.newLocation;
    
    
    prog += "\nnorthInfo = 1";

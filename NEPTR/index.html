@@ -132,7 +132,16 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 				}
 				
 				if (board.finalMatrix[robotx][roboty].state == "end") {
-					
+					message += "             .__\n";
+					message += "          ()(/ _ `._.--.\n";
+					message += "        ((|_.   ) ) )   \_    _.-.-._\n";
+					message += "     -- ((|   .' /  (\   \`--'  _)--=' ------ .\n";
+					message += "   '    cMMMa. -' ._)_\   \.-.-._.             .\n";
+					message += "  '    ''`````\        \  .  _)--='             .\n";
+					message += " '-----------\/'-. ---- `--\"'-------------------.\n";
+					message += "|             |\\                                |\n";
+					message += "|                                                |\n";
+					message += "`----------------------------------------a:f---'\n";
 				}
 				
 				$("#gameStatus").html($("#gameStatus").html() + message); 

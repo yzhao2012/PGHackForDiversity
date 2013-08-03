@@ -8,7 +8,6 @@ function builtinRead(x) {
     return Sk.builtinFiles["files"][x];
 }
 
-
 function runit(robot, board) {
    var prog = "robotHealth = " + robot.getHealth();
    prog += "\nrobotLocation = " + robot.getLocation();
@@ -18,14 +17,12 @@ function runit(robot, board) {
    prog += "\nsouthInfo = 2";
    prog += "\neastInfo = 3";
    prog += "\nwestInfo = 4";
-   
-   
    prog += "\n" + document.getElementById("givenCode").value; 
    prog += "\n" + document.getElementById("userCode").value;
-   var mypre = document.getElementById("gameStatus");
+   var mypre = document.getElementById("output");
    mypre.innerHTML = '';
    Sk.canvas = "mycanvas";
-   Sk.pre = "gameStatus";
+   Sk.pre = "output";
    Sk.configure({output:outf, read:builtinRead});
    eval(Sk.importMainWithBody("<stdin>",false,prog));
    

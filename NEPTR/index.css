@@ -1,3 +1,7 @@
 tr {
 	border:black;
 }
+
+#output {
+	display:none;
+}

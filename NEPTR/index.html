@@ -96,7 +96,7 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 			
 			var initialize = function() {
 				board = Board(levelList[level-1]);
-				robot = new Robot(5,[1,2]); 
+				robot = new Robot(5,board.start); 
 				console.log(levelList[level-1]);
 				$("#gameStatus").html('');
 

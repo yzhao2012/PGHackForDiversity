@@ -98,9 +98,8 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 				board = Board(levelList[level-1]);
 				robot = new Robot(5,[1,2]); 
 				console.log(levelList[level-1]);
-				loadLevel(board);
 				$("#gameStatus").html('');
-				drawRobot(robot.oldLocation,robot.newLocation);
+				drawEverything(robot,board);
 			}
 			
 			initialize();

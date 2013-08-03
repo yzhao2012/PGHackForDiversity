@@ -1,15 +1,12 @@
 var recentOutput;
 
 function outf(text) {
-    var mypre = document.getElementById("gameStatus");
-    mypre.innerHTML = mypre.innerHTML + text;
-    recentOutput = text;
-    
-    console.log(recentOutput);
-}
-
-function returnOutput() {
-	return recentOutput;
+    if (text != '\n') {
+    	var mypre = document.getElementById("output");
+	    mypre.innerHTML = text;
+	    pyout = text;
+	    console.log("outf="+text);
+    }
 }
 
 function builtinRead(x) {

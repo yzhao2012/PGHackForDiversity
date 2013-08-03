@@ -50,7 +50,6 @@ drawEverything = function(robot, board) {
 	loadLevel(board);
 	var newi = robot.newLocation[0];
 	var newj = robot.newLocation[1];
-	console.log(""+newi+newj);
 	var imgPath = "./8bit_img/neptr.png"
 	$("#i"+newi+"j"+newj).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
 }

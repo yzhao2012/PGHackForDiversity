@@ -34,7 +34,6 @@
 		</div>
 		
 		<div class="row" id="content">
-			
 			<div class="col-lg-4" id="pythonSide">
 				Your code:
 				<textarea id="givenCode" cols="50" rows="3" disabled>#This code tells you about the input
@@ -86,19 +85,23 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 		var robot;
 		var alive = true;
 		var board;
+		var level;
 		
-		var initialize = function() {
+
+		
+		$(document).ready(function() {
+			level = $.getUrlVar('level');
+			if (!(level>0)) {level = 1;} 
+			console.log("level is " + level);
+			
+			var initialize = function() {
 				board = Board(levelList[level-1]);
 				robot = new Robot(5,[1,2]); 
 				console.log(levelList[level-1]);
 				loadLevel(board);
-				$("#gameStatus").value('');
+				$("#gameStatus").html('');
+				drawRobot(robot.oldLocation,robot.newLocation);
 			}
-		
-		$(document).ready(function() {
-			var level = $.getUrlVar('level');
-			if (!(level>0)) {level = 1;} 
-			console.log("level is " + level);
 			
 			initialize();
 	

@@ -103,37 +103,30 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 			initialize();
 	
 			var coreLoop = function() {
-				//try to move
+				
 				var message = "Your Move: " + pyout;
 				var success = robot.move(pyout);
-				if (success) {
-					// see the result of the move on the board now
-					var i = robot.location[0];
-					var j = robot.location[1];
-					var newCell = board.finalMatrix[i][j];
-
-				} else {
+				
+				if (!success) {
 					message += "\nMessage: Invalid move. Your robot crashed :(";
 				}
 				
-				console.log(robot.getLocation());
-			
-				var robotx = robot.location[0];
-				var roboty = robot.location[1];
-				if (board.finalMatrix[0][1].getState() == "wall") {
+				console.log(robot.oldLocation());
+				
+				var robotx = robot.newLocation[0];
+				var roboty = robot.newLocation[1];
+				
+				if (board.finalMatrix[robotx][roboty].getState() == "wall") {
 					robot.damage(1);
-					robot.moveBack(pyout);
+					robot.newLocation = robot.oldLocation;
+					console.log("you hit a wall!");
 				}
 				
-				// update gameStatus box
 				if (robot.isDead) {
 					alert ("your robot has died!");
-					flag = false;
 				}
 				
-				var outbox = $("#gameStatus");
-				outbox.before(pyout + " you hit a wall");
-	    		console.log("you hit a wall!");
+	    		
 			}
 	
 			// button listeners

@@ -1,37 +1,34 @@
 function Robot(health, location) {
 	
 	this.health = health;
-	this.location = location;
+	this.oldLocation = location;
+	this.newLocation = location;
 	
-	this.getLocation = function() {
-		return this.location;
-	}
-	
-	this.getHealth = function() {
-		return this.health;
-	}
 	
 	//try to do move, return true when successful
 	this.move = function(direction) {
+		this.oldLocation = this.newLocation;
 		switch(direction) {
 			case "N":
-				this.location[0] = this.location[0] - 1;
+				this.newLocation[0] = this.newLocation[0] - 1;
 				break;
 			case "S":
-				this.location[0] = this.location[0] + 1;
+				this.newLocation[0] = this.newLocation[0] + 1;
 				break;
 			case "E":
-				this.location[1] = this.location[1] + 1;
+				this.newLocation[1] = this.newLocation[1] + 1;
 				break;
 			case "W":
-				this.location[1] = this.location[1] - 1;
+				this.newLocation[1] = this.newLocation[1] - 1;
 				break;
 			default:
 				return false;
 		}
 		return true;
+		
 	}
 	
+	/*
 	this.moveBack = function(direction) {
 		switch(direction) {
 			case "N":
@@ -51,6 +48,7 @@ function Robot(health, location) {
 		}
 		return true;
 	}
+	*/
 	
 	this.damage = function(dmgAmt) {
 		this.health = this.health - dmgAmt;

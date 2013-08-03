@@ -55,7 +55,7 @@ function Robot(health, location) {
 	}
 	
 	this.isDead = function() {
-		if (health <= 0) {
+		if (this.health <= 0) {
 			return true;
 		} else {
 			return false;

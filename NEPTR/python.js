@@ -18,6 +18,11 @@ function builtinRead(x) {
 function runit(robot, board) {
    var prog = "robotHealth = " + robot.health;
    prog += "\nrobotLocation = " + robot.newLocation;
+   
+   prog += "\nnorthInfo = 1";
+   prog += "\nsouthInfo = 2";
+   prog += "\neastInfo = 3";
+   prog += "\nwestInfo = 4";
    prog += "\n" + document.getElementById("givenCode").value; 
    prog += "\n" + document.getElementById("userCode").value;
    var mypre = document.getElementById("output");

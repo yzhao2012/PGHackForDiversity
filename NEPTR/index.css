@@ -1,7 +1,13 @@
-tr {
-	border:black;
-}
-
 #output {
 	display:none;
+}
+
+.gameCell {
+	background-image:'./8bit_img/lady_rainicorn.png';
+	border-color: 1px solid black;
+}
+
+ table, th, td
+{
+border: 1px solid black;
 }

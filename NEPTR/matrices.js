@@ -5,3 +5,4 @@ var level1 = [["wall","wall","wall","wall","wall","wall"],
 ["wall","wall","wall","wall","wall","wall"]];
 
 
+var levelList = [level1];

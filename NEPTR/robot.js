@@ -1,4 +1,4 @@
-function robot(health, location) {
+function Robot(health, location) {
 	
 	this.health = health;
 	this.location = location;
@@ -11,6 +11,7 @@ function robot(health, location) {
 		return this.health;
 	}
 	
+	//try to do move, return true when successful
 	this.move = function(direction) {
 		switch(direction) {
 			case "N":
@@ -25,10 +26,13 @@ function robot(health, location) {
 			case "W":
 				this.location[1] = this.location[1] - 1;
 				break;
+			default:
+				return false;
 		}
+		return true;
 	}
 	
-	robot.moveBack = function(direction) {
+	this.moveBack = function(direction) {
 		switch(direction) {
 			case "N":
 				this.location[0] = this.location[0] + 1;
@@ -42,7 +46,10 @@ function robot(health, location) {
 			case "W":
 				this.location[1] = this.location[1] + 1;
 				break;
+			default:
+				return false;
 		}
+		return true;
 	}
 	
 	this.damage = function(dmgAmt) {
@@ -50,7 +57,7 @@ function robot(health, location) {
 	}
 	
 	this.isDead = function() {
-		if (health == 0) {
+		if (health <= 0) {
 			return true;
 		} else {
 			return false;

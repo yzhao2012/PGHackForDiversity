@@ -12,6 +12,7 @@
 	<script src="matrices.js" type="text/javascript"></script>
 	<script src="board.js" type="text/javascript"></script>
 	<script src="robot.js" type="text/javascript"></script>
+	<script src="game.js" type = "text/javascript"></script>
 	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
@@ -37,7 +38,7 @@
 			<div class="col-lg-4" id="pythonSide">
 				Your code:
 				<textarea id="givenCode" cols="50" rows="3" disabled>#This code tells you about the input
-robotLoc = (robotx, roboty)
+robotLoc = robotLocation
 robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</textarea>
 				<textarea id="userCode" cols="50" rows="25">#Put your code here!</textarea><br>
 				<button type="button" id="runRobot" class="btn btn-primary">Run Robot</button>
@@ -48,8 +49,13 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 				<div>
 					<table id="gameBoard">
 					</table>
+					<br>
+					<textarea id="gameStatus" cols="90" rows="5" readonly></textarea>
 				</div>
-				<textarea id="gameStatus" cols="90" rows="5" readonly></textarea>
+				<div id="controls">
+					<button class = "btn btn-success" id="playPause">Play</button>
+					<button class = "btn btn-default" id="doOneStep">Step</button>
+				</div>
 			</div>
 			
 		</div>
@@ -76,52 +82,66 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 			}
 		})
 		
+		var pyout;
+		var robot;
+		var board;new Robot(5,[1,2]);
+		
 		$(document).ready(function() {
 			var level = $.getUrlVar('level');
 			if (!(level>0)) {level = 1;} 
 			console.log("level is " + level);
-		})
+			
+			board = Board(levelList[level-1]);
+			robot = new Robot(5,[1,2]); 
+			console.log(levelList[level-1]);
+			loadLevel(board);
 	
-		var pyout;
-		var robot1 = new robot(5,[1,2]);
-		var board1 = new board(level1);
-		var flag = true;
-		if (flag) {
-
-			if (robot1.health == 0) {
-				alert ("your robot has died!");
-				flag = false;
+			var coreLoop = function() {
+				if (robot.isDead) {
+					alert ("your robot has died!");
+					flag = false;
+				}
+				
+				if (pyout == "N" ||
+				pyout == "S" ||
+				pyout == "E" ||
+				pyout == "W") {
+					robot.move(pyout);
+				}
+				
+				console.log(robot.getLocation());
+			
+				var robotx = robot.location[0];
+				var roboty = robot.location[1];
+				if (board.finalMatrix[0][1].getState() == "wall") {
+					robot.damage(1);
+					robot.moveBack(pyout);
+				}
+				
+	    		console.log("you hit a wall!");
 			}
-
+	
+			// button listeners
 			$(function(){
-			$('#runRobot').on('click', function(e){
-	            e.preventDefault(); // preventing default click action
-	            console.log('clicked run button');
-	            runit(robot1, board1);
-	            pyout = $("#output").value;
-	            })
+				$('#runRobot').on('click', function(e){
+		            e.preventDefault(); // preventing default click action
+		            console.log('clicked run button');
+		            runit(robot, board);
+		            pyout = $("#output").value;
+		            $("#gameStatus").append(pyout);
+		           })
+		           
+		        $("#playPause").on('click', function(e){
+		        	//do something
+		        })
+		        
+		        $("#doOneStep").on('click', function(e){
+		        	
+		        })
 			})
+	
 			
-			if (pyout == "N" ||
-			pyout == "S" ||
-			pyout == "E" ||
-			pyout == "W") {
-				robot1.move(pyout);
-			}
-			
-			console.log(robot1.getLocation());
-		
-			var robotx = robot1.location[0];
-			var roboty = robot1.location[1];
-			if (board1.finalMatrix[0][1].getState() == "wall") {
-				robot1.damage(1);
-				robot1.moveBack(pyout);
-			}
-			
-    		console.log("you hit a wall!");
-    		
-    		
-		}
+		})
 	</script>
 	
 </body>

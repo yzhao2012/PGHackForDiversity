@@ -131,6 +131,10 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 					alert ("your robot has died!");
 				}
 				
+				if (board.finalMatrix[robotx][roboty].state == "end") {
+					
+				}
+				
 				$("#gameStatus").html($("#gameStatus").html() + message); 
 	    		//draw
 	    		

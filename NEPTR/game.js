@@ -11,7 +11,13 @@ drawHtmlTable = function(height, width) {
 	}
 }
 
-var imageHash = {"empty":"8bit_img/lady_rainicorn.png"};
+var imageHash = {"empty":"8bit_img/lady_rainicorn.png",
+	"start":"8bit_img/lumpy_space_princess.png",
+	"end":"8bit_img/pie.png",
+	"wall":"8bit_img/snail.png"
+};
+
+
 var size = "40px";
 
 var loadLevel = function(board) {
@@ -24,7 +30,6 @@ var loadLevel = function(board) {
 			$(newCol).addClass("gameCell");
 			//put appropriate background image in cell
 			var imgPath = imageHash[board.finalMatrix[i][j].state];
-			console.log(imgPath);
 			if (imgPath) {
 				$(newCol).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');	
 			}

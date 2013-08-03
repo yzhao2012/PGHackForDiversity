@@ -19,6 +19,9 @@ function Board(matrix)
 		this.finalMatrix[i] = new Array();
 		for (var a = 0; a < matrix[i].length ; a++)
 		{
+			if (matrix[i][a] == "start") {
+				this.start = [i,a];
+			}
 			this.finalMatrix[i][a] = new Cell(matrix[i][a]);
 		}
 	}

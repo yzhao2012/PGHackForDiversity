@@ -1,6 +1,10 @@
 function outf(text) {
-    var mypre = document.getElementById("gameStatus");
-    mypre.innerHTML = mypre.innerHTML + text;
+    if (text != '\n') {
+    	var mypre = document.getElementById("output");
+	    mypre.innerHTML = text;
+	    pyout = text;
+	    console.log("outf="+text);
+    }
 }
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)

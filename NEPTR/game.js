@@ -26,7 +26,7 @@ var loadLevel = function(board) {
 			var imgPath = imageHash[board.finalMatrix[i][j].state];
 			console.log(imgPath);
 			if (imgPath) {
-				//$(newCol).css("background-image","url('"+imgPath+"')");	
+				$(newCol).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');	
 			}
 			
 			
@@ -35,12 +35,13 @@ var loadLevel = function(board) {
 		$("#gameBoard").append($(newRow));
 	}
 	//in the future, make board as big as possible and variable
-	var size = "40px";
+	size = "40px";
 	$(".gameCell").css("height",size);
 	$(".gameCell").css("width",size);
 }
 
-drawRobot = function(oldLoc, newLoc) {
+drawEverything = function(robot, board) {
+	/*for 
 	var oldi = oldLoc[0];
 	var oldj = oldLoc[1];
 	var newi = newLoc[0];
@@ -51,5 +52,12 @@ drawRobot = function(oldLoc, newLoc) {
 	//put new robot
 	var imgPath = "./8bit_img/neptr.png"; 
 	console.log('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
+	$("#i"+newi+"j"+newj).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
+	*/
+	console.log("redrawing");
+	loadLevel(board);
+	var newi = robot.newLocation[0];
+	var newj = robot.newLocation[1];
+	//$("#i"+newi+"j"+newj).html('');
 	$("#i"+newi+"j"+newj).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
 }

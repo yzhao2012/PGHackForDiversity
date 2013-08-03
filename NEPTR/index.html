@@ -106,7 +106,7 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 			initialize();
 	
 			var coreLoop = function() {
-				
+				//update
 				var message = "Your Move: " + pyout;
 				var success = robot.move(pyout);
 				
@@ -129,7 +129,8 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 					alert ("your robot has died!");
 				}
 				
-	    		
+	    		//draw
+	    		drawEverything(robot, board);
 			}
 	
 			// button listeners
@@ -158,9 +159,8 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 		        
 		        $("#doOneStep").on('click', function(e){
 		        	runit(robot,board);
-		        	pyout = $("#output").html();
-		        	console.log(pyout);
-		        	//coreLoop();
+		        	console.log("pyout="+pyout);
+		        	coreLoop();
 		        })
 			})
 	

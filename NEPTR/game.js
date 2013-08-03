@@ -54,6 +54,7 @@ drawEverything = function(robot, board) {
 	$("#i"+newi+"j"+newj).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
 	*/
 	console.log("redrawing");
+	$("#gameBoard").html('');
 	loadLevel(board);
 	var newi = robot.newLocation[0];
 	var newj = robot.newLocation[1];

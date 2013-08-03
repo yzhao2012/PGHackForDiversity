@@ -9,6 +9,9 @@
 	<script src="../skulpt/dist/builtin.js" type="text/javascript"></script>
 	<script src="game.js" type="text/javascript"></script>
 	<script src="python.js" type="text/javascript"></script>
+	<script src="matrices.js" type="text/javascript"></script>
+	<script src="board.js" type="text/javascript"></script>
+	<script src="robot.js" type="text/javascript"></script>
 	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
@@ -53,14 +56,27 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 	</div>
 	
 	<script type="text/javascript">
+	
+		var robot1 = new robot(5,[1,2]);
+		var board1 = new board(level1);
+		var flag = true;
+		while (flag) {
+			
+		
+
 		drawHtmlTable(5,5);
-		 $(function(){
-        $('#runRobot').on('click', function(e){
+		
+		$(function(){
+		$('#runRobot').on('click', function(e){
             e.preventDefault(); // preventing default click action
             console.log('clicked run button');
-            runit(1,2,3,4,5,6);
-        })
-    })
+            runit(robot1, board1);
+            })
+		})
+		
+		
+    		
+		}
 	</script>
 	
 </body>

@@ -7,6 +7,10 @@ function robot(health, location) {
 		return this.location;
 	}
 	
+	this.getHealth = function() {
+		return this.health;
+	}
+	
 	this.move = function(direction) {
 		switch(direction) {
 			case "N":

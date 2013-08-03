@@ -107,11 +107,12 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 	
 			var coreLoop = function() {
 				//update
-				var message = "Your Move: " + pyout;
+				
+				var message = "Your Move: " + pyout + "\n";
 				var success = robot.move(pyout);
 				
 				if (!success) {
-					message += "\nMessage: Invalid move. Your robot crashed :(";
+					message += "Message: Invalid move. Your robot crashed :( \n";
 				}
 				
 				console.log(robot.oldLocation);
@@ -130,7 +131,9 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 					alert ("your robot has died!");
 				}
 				
+				$("#gameStatus").html($("#gameStatus").html() + message); 
 	    		//draw
+	    		
 	    		drawEverything(robot, board);
 			}
 	

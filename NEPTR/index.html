@@ -86,7 +86,12 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 		var robot1 = new robot(5,[1,2]);
 		var board1 = new board(level1);
 		var flag = true;
-		while (flag) {
+		if (flag) {
+
+			if (robot1.health == 0) {
+				alert ("your robot has died!");
+				flag = false;
+			}
 
 			$(function(){
 			$('#runRobot').on('click', function(e){
@@ -96,8 +101,25 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 	            pyout = $("#output").value;
 	            })
 			})
+			
+			if (pyout == "N" ||
+			pyout == "S" ||
+			pyout == "E" ||
+			pyout == "W") {
+				robot1.move(pyout);
+			}
+			
+			console.log(robot1.getLocation());
 		
-		
+			var robotx = robot1.location[0];
+			var roboty = robot1.location[1];
+			if (board1.finalMatrix[0][1].getState() == "wall") {
+				robot1.damage(1);
+				robot1.moveBack(pyout);
+			}
+			
+    		console.log("you hit a wall!");
+    		
     		
 		}
 	</script>

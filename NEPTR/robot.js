@@ -28,6 +28,23 @@ function robot(health, location) {
 		}
 	}
 	
+	robot.moveBack = function(direction) {
+		switch(direction) {
+			case "N":
+				this.location[0] = this.location[0] + 1;
+				break;
+			case "S":
+				this.location[0] = this.location[0] - 1;
+				break;
+			case "E":
+				this.location[1] = this.location[1] - 1;
+				break;
+			case "W":
+				this.location[1] = this.location[1] + 1;
+				break;
+		}
+	}
+	
 	this.damage = function(dmgAmt) {
 		this.health = this.health - dmgAmt;
 	}

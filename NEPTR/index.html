@@ -121,7 +121,7 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 				
 				if (board.finalMatrix[robotx][roboty].getState() == "wall") {
 					robot.damage(1);
-					robot.newLocation = robot.oldLocation;
+					robot.newLocation = [robot.oldLocation(0), robot.oldLocation(1)];
 					console.log("you hit a wall!");
 				}
 				

@@ -40,19 +40,6 @@ var loadLevel = function(board) {
 }
 
 drawEverything = function(robot, board) {
-	/*for 
-	var oldi = oldLoc[0];
-	var oldj = oldLoc[1];
-	var newi = newLoc[0];
-	var newj = newLoc[1];
-	console.log("let's draw!");
-	//delete old robot
-	$("#i"+oldi+"j"+oldj).html('');
-	//put new robot
-	var imgPath = "./8bit_img/neptr.png"; 
-	console.log('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
-	$("#i"+newi+"j"+newj).html('<img src="'+imgPath+'" width="'+size+' height="'+size+'">');
-	*/
 	console.log("redrawing");
 	$("#gameBoard").html('');
 	loadLevel(board);

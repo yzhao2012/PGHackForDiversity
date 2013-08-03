@@ -7,7 +7,7 @@ function Robot(health, location) {
 	
 	//try to do move, return true when successful
 	this.move = function(direction) {
-		this.oldLocation = this.newLocation;
+		this.oldLocation = [this.newLocation[0], this.newLocation[1]];
 		switch(direction) {
 			case "N":
 				this.newLocation[0] = this.newLocation[0] - 1;

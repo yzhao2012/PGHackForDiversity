@@ -1,18 +1,23 @@
-
 function cell(state)
 {
 	this.state = state;
+	this.getState = function()
+	{
+		return this.state;
+	}
 }
 
 function board(matrix)
 {
-	var finalMatrix = [[]];
+	this.finalMatrix = new Array();
 	for (var i = 0; i < matrix.length ; i++)
 	{
+		this.finalMatrix[i] = new Array();
 		for (var a = 0; a < matrix[i].length ; a++)
-		finalMatrix[i][a] = cell(matrix[i][a]);
+		{
+			this.finalMatrix[i][a] = new cell(matrix[i][a]);
+		}
 	}
 	
 	
 }
-

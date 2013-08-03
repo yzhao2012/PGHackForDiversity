@@ -122,26 +122,30 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 				
 				if (board.finalMatrix[robotx][roboty].getState() == "wall") {
 					robot.damage(1);
-					console.log("your robot has " + robot.health + " life left!");
+					message += "You've hit a wall! \n";
+					message += "Your robot has " + robot.health + " life left! \n";
 					robot.newLocation = [robot.oldLocation[0], robot.oldLocation[1]];
-					console.log("you hit a wall!");
+					//console.log("you hit a wall!");
 				}
 				
 				if (robot.isDead()) {
-					alert ("your robot has died!");
+					alert("Your robot has died!");
+					message = "";
+					initialize();
 				}
 				
 				if (board.finalMatrix[robotx][roboty].state == "end") {
-					message += "             .__\n";
-					message += "          ()(/ _ `._.--.\n";
-					message += "        ((|_.   ) ) )   \_    _.-.-._\n";
-					message += "     -- ((|   .' /  (\   \`--'  _)--=' ------ .\n";
-					message += "   '    cMMMa. -' ._)_\   \.-.-._.             .\n";
-					message += "  '    ''`````\        \  .  _)--='             .\n";
-					message += " '-----------\/'-. ---- `--\"'-------------------.\n";
-					message += "|             |\\                                |\n";
-					message += "|                                                |\n";
-					message += "`----------------------------------------a:f---'\n";
+					message += "YOU WIN! \n";
+			//		message += "             .__\n";
+			//		message += "          ()(/ _ `._.--.\n";
+			//		message += "        ((|_.   ) ) )   \_    _.-.-._\n";
+			//		message += "     -- ((|   .' /  (\   \`--'  _)--=' ------ .\n";
+			//		message += "   '    cMMMa. -' ._)_\   \.-.-._.             .\n";
+			//			message += "  '    ''`````\        \  .  _)--='             .\n";
+			//		message += " '-----------\/'-. ---- `--\"'-------------------.\n";
+			//		message += "|             |\\                                |\n";
+			//		message += "|                                                |\n";
+			//		message += "`----------------------------------------a:f---'\n";
 				}
 				
 				$("#gameStatus").html($("#gameStatus").html() + message); 

@@ -158,9 +158,9 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 		        
 		        $("#doOneStep").on('click', function(e){
 		        	runit(robot,board);
-		        	pyout = $("#output").html();
+		        	pyout = returnOutput();
 		        	console.log(pyout);
-		        	//coreLoop();
+		        	coreLoop();
 		        })
 			})
 	

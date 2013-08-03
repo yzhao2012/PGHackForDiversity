@@ -1,7 +1,17 @@
+var recentOutput;
+
 function outf(text) {
     var mypre = document.getElementById("gameStatus");
     mypre.innerHTML = mypre.innerHTML + text;
+    recentOutput = text;
+    
+    console.log(recentOutput);
 }
+
+function returnOutput() {
+	return recentOutput;
+}
+
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
             throw "File not found: '" + x + "'";

@@ -84,29 +84,36 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 		
 		var pyout;
 		var robot;
-		var board;new Robot(5,[1,2]);
+		var alive = true;
+		var board;
+		
+		var initialize = function() {
+				board = Board(levelList[level-1]);
+				robot = new Robot(5,[1,2]); 
+				console.log(levelList[level-1]);
+				loadLevel(board);
+				$("#gameStatus").value('');
+			}
 		
 		$(document).ready(function() {
 			var level = $.getUrlVar('level');
 			if (!(level>0)) {level = 1;} 
 			console.log("level is " + level);
 			
-			board = Board(levelList[level-1]);
-			robot = new Robot(5,[1,2]); 
-			console.log(levelList[level-1]);
-			loadLevel(board);
+			initialize();
 	
 			var coreLoop = function() {
-				if (robot.isDead) {
-					alert ("your robot has died!");
-					flag = false;
-				}
-				
-				if (pyout == "N" ||
-				pyout == "S" ||
-				pyout == "E" ||
-				pyout == "W") {
-					robot.move(pyout);
+				//try to move
+				var message = "Your Move: " + pyout;
+				var success = robot.move(pyout);
+				if (success) {
+					// see the result of the move on the board now
+					var i = robot.location[0];
+					var j = robot.location[1];
+					var newCell = board.finalMatrix[i][j];
+
+				} else {
+					message += "\nMessage: Invalid move. Your robot crashed :(";
 				}
 				
 				console.log(robot.getLocation());
@@ -118,6 +125,14 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 					robot.moveBack(pyout);
 				}
 				
+				// update gameStatus box
+				if (robot.isDead) {
+					alert ("your robot has died!");
+					flag = false;
+				}
+				
+				var outbox = $("#gameStatus");
+				outbox.before(pyout + " you hit a wall");
 	    		console.log("you hit a wall!");
 			}
 	
@@ -126,17 +141,29 @@ robotSurrounding = {"N":northInfo, "S":southInfo, "E": eastInfo, "W":westInfo}</
 				$('#runRobot').on('click', function(e){
 		            e.preventDefault(); // preventing default click action
 		            console.log('clicked run button');
-		            runit(robot, board);
-		            pyout = $("#output").value;
-		            $("#gameStatus").append(pyout);
-		           })
+		            console.log($('#runRobot').html());
+		            if ($('#runRobot').html() == "Run Robot") {
+		            	$('#runRobot').html("Reset");
+		            	$("#userCode").prop('disabled',true);
+		            	$("#runRobot").removeClass('btn-primary').addClass('btn-danger');
+		            } else {
+		            	$('#runRobot').html("Run Robot");
+		            	$("#userCode").prop('disabled',false);
+		            	$("#runRobot").removeClass('btn-danger').addClass('btn-primary');
+		            	//restart game
+		            	$("#gameBoard").html('');
+		            	initialize();
+		            }
+		        })
 		           
 		        $("#playPause").on('click', function(e){
 		        	//do something
 		        })
 		        
 		        $("#doOneStep").on('click', function(e){
-		        	
+		        	runit(robot,board);
+		        	pyout = $("#output").value();
+		        	coreLoop();
 		        })
 			})
 	
